@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Crab Arena</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="640" height="360"></canvas>
+  <div id="overlay"></div>
+  <div id="banner"><h1></h1><h2></h2></div>
+</div>
+
+<div id="hud" hidden>
+  <div class="hud-q" id="hudQ"></div>
+  <div class="hud-status" id="hudStatus"></div>
+  <div class="hud-right">
+    <span class="cost" id="hudCost" title="Model · tokens generated · elapsed time"></span>
+    <button id="btnSpeed" title="Animation speed">1×</button>
+    <button id="btnMute" title="Sound effects">♪</button>
+    <button id="btnMusic" title="Music">♫</button>
+    <button id="btnScrolls" title="Read every answer and the battle log">Scrolls</button>
+    <button id="btnFlee" class="danger" title="Abandon this battle">Flee</button>
+  </div>
+</div>
+
+<aside id="setup" class="tablet">
+  <header>
+    <h1>CRAB<br>ARENA</h1>
+    <p class="motto">Ave, Imperator! Morituri te salutant.</p>
+    <div class="audio-row"><button id="setMute">♪ Sound</button><button id="setMusic">♫ Music</button></div>
+  </header>
+
+  <section id="keyRow" class="row"></section>
+
+  <section>
+    <h3>Choose your gladiators <span id="pickCount"></span></h3>
+    <div id="fighters"></div>
+  </section>
+
+  <section class="row emperor-row">
+    <label for="modelSel">Gladiator model <small>(every crab runs this)</small></label>
+    <select id="modelSel"></select>
+  </section>
+  <section class="row emperor-row">
+    <label for="judgeSel">Emperor <small>(judges each round's arguments)</small></label>
+    <select id="judgeSel"></select>
+  </section>
+  <label class="check"><input type="checkbox" id="stylesChk" checked> Give each gladiator its own fighting style <small>(off = identical prompts, only the random seed differs)</small></label>
+
+  <section>
+    <h3>The question</h3>
+    <textarea id="question" rows="4" placeholder="Ask anything… e.g. What's the best way to learn a new language as an adult?"></textarea>
+    <p class="hint" id="callHint"></p>
+  </section>
+
+  <div class="actions">
+    <button id="btnStart" class="big">⚔ Begin the games</button>
+    <button id="btnDemo" class="ghost">Practice bout (free, fake answers)</button>
+  </div>
+</aside>
+
+<aside id="winner" class="tablet" hidden></aside>
+<div id="modal" hidden><div class="modal-box tablet"><div class="tabs" id="tabs"></div><div class="modal-body md" id="modalBody"></div><button class="close" id="modalClose">✕</button></div></div>
+<div id="toast" hidden></div>
+
+<script src="sound.js"></script>
+<script src="arena.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
